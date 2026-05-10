@@ -1,29 +1,49 @@
 {
   "expo": {
-    "name": "HouseholdBills",
-    "slug": "HouseholdBills",
+    "name": "Računi",
+    "slug": "racuni",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "supportsTablet": true
+      "backgroundColor": "#2D3F51"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#2D3F51"
       },
-      "edgeToEdgeEnabled": true
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_IMAGES"
+      ]
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
+    "plugins": [
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Allow Računi to save photos to your gallery.",
+          "savePhotosPermission": "Allow Računi to save photos to your gallery.",
+          "isAccessMediaLocationEnabled": true
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "Allow Računi to use your camera to photograph bills."
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Računi to use your camera to scan QR codes."
+        }
+      ]
+    ]
   }
 }

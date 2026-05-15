@@ -94,6 +94,7 @@ const QR_MAPPINGS = [
     { keywords: ['hep elektra', 'hep'], category: 'Struja' },
     { keywords: ['mikić', 'mikic'], category: 'Mikic' },
     { keywords: ['grad osijek'], category: 'Grad Osijek' },
+    { keywords: ['vodovod'], category: 'Voda' },
   ];
 
 
@@ -523,10 +524,9 @@ async function savePhotoToRacuni(sourceUri, name) {
   async function pickPhoto() {
     const perm = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (!perm.granted) { Alert.alert('Permission needed', 'Gallery permission is required.'); return; }
-    const result = await ImagePicker.launchImageLibraryAsync({
+   const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       quality: 0.8,
-      allowsEditing: true,
     });
     if (!result.canceled) {
       const saved = await savePhotoToRacuni(result.assets[0].uri, editSlot);
@@ -678,7 +678,7 @@ async function moveCategory(name, direction) {
      {/* Header */}
       <View style={s.header}>
         <View>
-          <Image source={require('../assets/logo.png')} style={{ height: 32, width: 120 }} resizeMode="contain" />
+          <Image source={require('../assets/logo.png')} style={{ height: 26, width: 120 }} resizeMode="contain" />
         </View>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <TouchableOpacity
@@ -1020,11 +1020,11 @@ async function moveCategory(name, direction) {
                     style={[s.checkBtn, orphanRazlika.paid && s.checkBtnChecked]}
                     onPress={() => togglePaid(razlikaName)}
                   >
-                    {razlikaBill.paid && (
-                                  <Svg width="16" height="16" viewBox="0 0 24 24">
-                                    <Polyline points="4,12 9,17 20,6" fill="none" stroke="#16A34A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                                  </Svg>
-                                )}
+                    {orphanRazlika.paid && (
+                      <Svg width="16" height="16" viewBox="0 0 24 24">
+                        <Polyline points="4,12 9,17 20,6" fill="none" stroke="#16A34A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </Svg>
+                    )}
                   </TouchableOpacity>
                   {orphanRazlika.photoUri
                     ? <TouchableOpacity onPress={() => setLightboxUri(orphanRazlika.photoUri)}>
@@ -1137,7 +1137,7 @@ async function moveCategory(name, direction) {
 
       <Modal visible={showMonthPicker} animationType="slide" transparent onRequestClose={() => setShowMonthPicker(false)}>
   <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.45)' }}>
-    <View style={{ backgroundColor: '#fff', borderTopLeftRadius: 16, borderTopRightRadius: 16, padding: 20, paddingBottom: 40 }}>
+    <ScrollView style={{ backgroundColor: '#fff', borderTopLeftRadius: 16, borderTopRightRadius: 16 }} contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
         <Text style={{ fontSize: 16, fontWeight: '600', color: '#111' }}>Pick a month</Text>
         <TouchableOpacity
@@ -1180,9 +1180,11 @@ async function moveCategory(name, direction) {
           </TouchableOpacity>
         ))}
       </View>
-    </View>
+  </ScrollView>
   </View>
 </Modal>
+
+      {/* ── Manage modal ── */}
 
 
 <Modal visible={scannerVisible} animationType="slide" onRequestClose={() => setScannerVisible(false)}>
@@ -1232,7 +1234,8 @@ async function moveCategory(name, direction) {
       {/* ── Bill entry modal ── */}
       <Modal visible={modalVisible} animationType="slide" transparent onRequestClose={() => setModalVisible(false)}>
   <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.45)' }}>
-    <View style={{ backgroundColor: '#fff', borderTopLeftRadius: 16, borderTopRightRadius: 16, padding: 20, paddingBottom: 40 }}>
+    <View style={{ backgroundColor: '#fff', borderTopLeftRadius: 16, borderTopRightRadius: 16, maxHeight: '90%' }}>
+    <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 80 }}>
 
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
         <Text style={{ fontSize: 16, fontWeight: '600', color: '#111' }}>
@@ -1374,6 +1377,7 @@ async function moveCategory(name, direction) {
         </TouchableOpacity>
       </View>
 
+   </ScrollView>
     </View>
   </View>
 </Modal>
@@ -1543,7 +1547,8 @@ async function moveCategory(name, direction) {
 
 <Modal visible={razlikaModalVisible} animationType="slide" transparent onRequestClose={() => setRazlikaModalVisible(false)}>
   <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.45)' }}>
-    <View style={{ backgroundColor: '#fff', borderTopLeftRadius: 16, borderTopRightRadius: 16, padding: 20, paddingBottom: 40 }}>
+<View style={{ backgroundColor: '#fff', borderTopLeftRadius: 16, borderTopRightRadius: 16, maxHeight: '90%' }}>
+    <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 80 }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
         <Text style={{ fontSize: 16, fontWeight: '600', color: '#111' }}>
           {razlikaSlot} — Razlika
@@ -1634,7 +1639,7 @@ async function moveCategory(name, direction) {
           </TouchableOpacity>
         </View>
       )}
-      <View style={{ flexDirection: 'row', marginTop: 16 }}>
+  <View style={{ flexDirection: 'row', marginTop: 16 }}>
         <TouchableOpacity
           style={{ borderWidth: 1, borderColor: '#D1D5DB', borderRadius: 8, paddingHorizontal: 18, paddingVertical: 12, marginRight: 8 }}
           onPress={() => setRazlikaModalVisible(false)}
@@ -1648,6 +1653,7 @@ async function moveCategory(name, direction) {
           <Text style={{ fontSize: 14, fontWeight: '600', color: '#fff' }}>Save</Text>
         </TouchableOpacity>
       </View>
+    </ScrollView>
     </View>
   </View>
 </Modal>
@@ -1751,6 +1757,6 @@ dateInput: { borderWidth: 1, borderColor: '#D1D5DB', borderRadius: 8, paddingHor
   expandedDeleteBtnText: { fontSize: 13, color: '#DC2626', fontWeight: '500' },
  scanBtn: { backgroundColor: '#2D3F51', borderRadius: 8, paddingHorizontal: 14, paddingVertical: 10, borderWidth: 1, borderColor: 'rgba(255,255,255,0.2)' },
   scanBtnText: { fontSize: 13, fontWeight: '600', color: '#fff', letterSpacing: 0.3 },
- orderBtn: { width: 22, height: 22, borderRadius: 11, alignItems: 'center', justifyContent: 'center' },
+ orderBtn: { width: 22, height: 22, borderRadius: 13, alignItems: 'center', justifyContent: 'center' },
   orderBtnText: { fontSize: 10, color: '#fff', fontWeight: '700' },
   });

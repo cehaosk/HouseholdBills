@@ -20,9 +20,16 @@
         "android.permission.CAMERA",
         "android.permission.READ_EXTERNAL_STORAGE",
         "android.permission.WRITE_EXTERNAL_STORAGE",
-        "android.permission.READ_MEDIA_IMAGES"
-      ]
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.READ_MEDIA_VISUAL_USER_SELECTED",
+        "android.permission.ACCESS_MEDIA_LOCATION",
+        "android.permission.READ_MEDIA_VIDEO",
+        "android.permission.READ_MEDIA_AUDIO",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.cehaosk.racuni"
     },
+    
     "plugins": [
       [
         "expo-media-library",
@@ -44,6 +51,18 @@
           "cameraPermission": "Allow Računi to use your camera to scan QR codes."
         }
       ]
-    ]
+    ],
+
+    "statusBar": {
+      "barStyle": "dark-content",
+      "backgroundColor": "#ffffff"
+    },
+
+    "extra": {
+      "eas": {
+        "projectId": "2a9752b0-84e4-4a7d-9f6c-5318b11b5ffa"
+      }
+    }
+    
   }
 }

@@ -108,10 +108,15 @@ const razlikaCats = categories
     : 0;
   const highM = monthTotals.indexOf(Math.max(...monthTotals, 0));
   const catTotals = {};
+  const catMonths = {};
   allYearBills.forEach(b => {
-    if (!catTotals[b.name]) catTotals[b.name] = { s: 0, c: 0 };
-    catTotals[b.name].s += b.amount || 0;
-    catTotals[b.name].c++;
+    const name = b.name.endsWith(' - Razlika') ? b.name.replace(' - Razlika', '') : b.name;
+    if (!catTotals[name]) { catTotals[name] = { s: 0, c: 0 }; catMonths[name] = new Set(); }
+    catTotals[name].s += b.amount || 0;
+    catMonths[name].add(b.month);
+  });
+  Object.keys(catTotals).forEach(name => {
+    catTotals[name].c = catMonths[name].size;
   });
   const catAvgs = Object.entries(catTotals)
     .map(([n, { s, c }]) => ({ n, avg: s / c }))

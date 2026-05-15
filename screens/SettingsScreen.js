@@ -88,14 +88,16 @@ export default function SettingsScreen() {
     return true;
   }
 
-  function getActiveNames(m, y) {
+ function getActiveNames(m, y) {
     const seen = new Map();
     for (const c of categories) {
       if (isCatActive(c, m, y) && !seen.has(c.name)) {
-        seen.set(c.name, mi(c.activeFrom.year, c.activeFrom.month));
+        seen.set(c.name, { mi: mi(c.activeFrom.year, c.activeFrom.month), order: c.order !== undefined ? c.order : 9999 });
       }
     }
-    return [...seen.entries()].sort((a, b) => a[1] - b[1]).map(e => e[0]);
+    return [...seen.entries()]
+      .sort((a, b) => a[1].order !== b[1].order ? a[1].order - b[1].order : a[1].mi - b[1].mi)
+      .map(e => e[0]);
   }
 
   async function addCategory() {

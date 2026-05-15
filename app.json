@@ -53,10 +53,11 @@
       ]
     ],
 
-    "statusBar": {
-      "barStyle": "dark-content",
-      "backgroundColor": "#ffffff"
-    },
+  "statusBar": {
+  "barStyle": "dark-content",
+  "backgroundColor": "#2D3F51",
+  "translucent": false
+}
 
     "extra": {
       "eas": {

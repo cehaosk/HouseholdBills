@@ -66,7 +66,7 @@ export default function App() {
 }
 
 const s = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: '#fff' },
+  safe: { flex: 1, backgroundColor: '#fff', paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 },
   content: { flex: 1 },
   tabBar: {
     flexDirection: 'row', height: 100, borderTopWidth: 1,

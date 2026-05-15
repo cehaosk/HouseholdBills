@@ -381,7 +381,7 @@ const razlikaCats = categories
 }
 
 const s = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: '#fff', paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 },
+  safe: { flex: 1, backgroundColor: '#fff' },
   scroll: { padding: 16, paddingBottom: 40 },
   title: { fontSize: 20, fontWeight: '600', color: '#111', marginBottom: 14 },
   yearNav: { flexDirection: 'row', alignItems: 'center', marginBottom: 16, justifyContent: 'space-between' },

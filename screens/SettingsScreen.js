@@ -368,7 +368,7 @@ export default function SettingsScreen() {
 }
 
 const s = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: '#fff', paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 },
+  safe: { flex: 1, backgroundColor: '#fff' },
   scroll: { padding: 16, paddingBottom: 40 },
   title: { fontSize: 20, fontWeight: '600', color: '#111', marginBottom: 20 },
   sectionTitle: { fontSize: 11, fontWeight: '600', color: '#9CA3AF', letterSpacing: 0.7, marginBottom: 8 },

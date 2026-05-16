@@ -27,15 +27,14 @@
         "android.permission.READ_MEDIA_AUDIO",
         "android.permission.RECORD_AUDIO"
       ],
-      "package": "com.cehaosk.racuni"
+      "package": "com.cehaosk.racuni",
+      "softwareKeyboardLayoutMode": "pan",
+      "statusBar": {
+        "barStyle": "dark-content",
+        "backgroundColor": "#2D3F51",
+        "translucent": false
+      }
     },
-
-    "statusBar": {
-  "barStyle": "dark-content",
-  "backgroundColor": "#2D3F51",
-  "translucent": false
-    },
-    
     "plugins": [
       [
         "expo-media-library",
@@ -58,15 +57,10 @@
         }
       ]
     ],
-
-  
-
-      "extra": {
-        "eas": {
-          "projectId": "2a9752b0-84e4-4a7d-9f6c-5318b11b5ffa"
-        }
+    "extra": {
+      "eas": {
+        "projectId": "2a9752b0-84e4-4a7d-9f6c-5318b11b5ffa"
       }
-      
-    
+    }
   }
 }

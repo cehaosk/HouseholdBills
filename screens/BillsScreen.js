@@ -1137,8 +1137,8 @@ async function moveCategory(name, direction) {
 
       <Modal visible={showMonthPicker} animationType="slide" transparent onRequestClose={() => setShowMonthPicker(false)}>
   <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.45)' }}>
-    <ScrollView style={{ backgroundColor: '#fff', borderTopLeftRadius: 16, borderTopRightRadius: 16 }} contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+<View style={{ backgroundColor: '#fff', borderTopLeftRadius: 16, borderTopRightRadius: 16, maxHeight: '80%' }}>
+    <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
         <Text style={{ fontSize: 16, fontWeight: '600', color: '#111' }}>Pick a month</Text>
         <TouchableOpacity
           onPress={() => setShowMonthPicker(false)}
@@ -1181,6 +1181,7 @@ async function moveCategory(name, direction) {
         ))}
       </View>
   </ScrollView>
+  </View>
   </View>
 </Modal>
 

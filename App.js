@@ -4,6 +4,7 @@ import BillsScreen from './screens/BillsScreen';
 import ReportScreen from './screens/ReportScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Animated, Image, StatusBar } from 'react-native';
 
 export default function App() {
   const [screen, setScreen] = React.useState('bills');
@@ -31,6 +32,7 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
+      <StatusBar backgroundColor="#2D3F51" barStyle="light-content" />
     <SafeAreaView style={s.safe}>
       <View style={s.content}>
         {screen === 'bills'

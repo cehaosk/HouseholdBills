@@ -31,7 +31,7 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <StatusBar backgroundColor="#2D3F51" barStyle="light-content" />
+      <StatusBar backgroundColor="#ffffff" barStyle="dark-content" />
       <SafeAreaView style={s.safe}>
         <View style={s.content}>
           {screen === 'bills'

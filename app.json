@@ -11,9 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#2D3F51"
     },
-    "statusBar": {
+        "statusBar": {
       "barStyle": "dark-content",
-      "backgroundColor": "#2D3F51",
+      "backgroundColor": "#ffffff",
       "translucent": false
     },
     "android": {

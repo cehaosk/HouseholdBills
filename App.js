@@ -31,7 +31,10 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <StatusBar backgroundColor="#ffffff" barStyle="dark-content" />
+      <StatusBar 
+        backgroundColor={splashDone ? "#ffffff" : "#2D3F51"} 
+        barStyle={splashDone ? "dark-content" : "light-content"}
+      />
       <SafeAreaView style={s.safe}>
         <View style={s.content}>
           {screen === 'bills'
@@ -57,7 +60,7 @@ export default function App() {
 
         {!splashDone && (
           <Animated.View style={[s.splash, { opacity: splashOpacity }]}>
-            <Image source={require('./assets/splash.png')} style={{ width: 200, height: 200 }} resizeMode="contain" />
+            <Image source={require('./assets/splash.png')} style={{ width: 130, height: 130 }} resizeMode="contain" />
           </Animated.View>
         )}
 

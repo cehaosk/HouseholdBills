@@ -1,10 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Animated, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Animated, Image, StatusBar } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import BillsScreen from './screens/BillsScreen';
 import ReportScreen from './screens/ReportScreen';
 import SettingsScreen from './screens/SettingsScreen';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Animated, Image, StatusBar } from 'react-native';
 
 export default function App() {
   const [screen, setScreen] = React.useState('bills');
@@ -33,36 +32,36 @@ export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <StatusBar backgroundColor="#2D3F51" barStyle="light-content" />
-    <SafeAreaView style={s.safe}>
-      <View style={s.content}>
-        {screen === 'bills'
-          ? <BillsScreen initialMonth={navMonth} initialYear={navYear} />
-          : screen === 'report'
-          ? <ReportScreen onNavigateToBills={navigateToBills} />
-          : <SettingsScreen />}
-      </View>
-      <View style={s.tabBar}>
-        <TouchableOpacity style={s.tab} onPress={() => { setNavMonth(null); setNavYear(null); setScreen('bills'); }}>
-          <Text style={s.tabIcon}>🏠</Text>
-          <Text style={[s.tabLabel, screen === 'bills' && s.tabLabelActive]}>Bills</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={s.tab} onPress={() => setScreen('report')}>
-          <Text style={s.tabIcon}>📊</Text>
-          <Text style={[s.tabLabel, screen === 'report' && s.tabLabelActive]}>Report</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={s.tab} onPress={() => setScreen('settings')}>
-          <Text style={s.tabIcon}>⚙️</Text>
-          <Text style={[s.tabLabel, screen === 'settings' && s.tabLabelActive]}>Settings</Text>
-        </TouchableOpacity>
-      </View>
+      <SafeAreaView style={s.safe}>
+        <View style={s.content}>
+          {screen === 'bills'
+            ? <BillsScreen initialMonth={navMonth} initialYear={navYear} />
+            : screen === 'report'
+            ? <ReportScreen onNavigateToBills={navigateToBills} />
+            : <SettingsScreen />}
+        </View>
+        <View style={s.tabBar}>
+          <TouchableOpacity style={s.tab} onPress={() => { setNavMonth(null); setNavYear(null); setScreen('bills'); }}>
+            <Text style={s.tabIcon}>🏠</Text>
+            <Text style={[s.tabLabel, screen === 'bills' && s.tabLabelActive]}>Bills</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={s.tab} onPress={() => setScreen('report')}>
+            <Text style={s.tabIcon}>📊</Text>
+            <Text style={[s.tabLabel, screen === 'report' && s.tabLabelActive]}>Report</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={s.tab} onPress={() => setScreen('settings')}>
+            <Text style={s.tabIcon}>⚙️</Text>
+            <Text style={[s.tabLabel, screen === 'settings' && s.tabLabelActive]}>Settings</Text>
+          </TouchableOpacity>
+        </View>
 
-      {!splashDone && (
-        <Animated.View style={[s.splash, { opacity: splashOpacity }]}>
-          <Image source={require('./assets/splash.png')} style={{ width: 200, height: 200 }} resizeMode="contain" />
-        </Animated.View>
-      )}
+        {!splashDone && (
+          <Animated.View style={[s.splash, { opacity: splashOpacity }]}>
+            <Image source={require('./assets/splash.png')} style={{ width: 200, height: 200 }} resizeMode="contain" />
+          </Animated.View>
+        )}
 
-    </SafeAreaView>
+      </SafeAreaView>
     </GestureHandlerRootView>
   );
 }

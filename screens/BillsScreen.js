@@ -1678,7 +1678,7 @@ async function moveCategory(name, direction) {
 }
 
 const s = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: '#fff' },
+  safe: { flex: 1, backgroundColor: '#fff', paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 },
   header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 16, paddingTop: 12, paddingBottom: 8 },
   title: { fontSize: 20, fontWeight: '600', color: '#111' },
   sub: { fontSize: 13, color: '#6B7280', marginTop: 2 },

@@ -4,6 +4,9 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import BillsScreen from './screens/BillsScreen';
 import ReportScreen from './screens/ReportScreen';
 import SettingsScreen from './screens/SettingsScreen';
+import * as SplashScreen from 'expo-splash-screen';
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [screen, setScreen] = React.useState('bills');
@@ -13,6 +16,7 @@ export default function App() {
   const splashOpacity = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
+    SplashScreen.hideAsync();
     const timer = setTimeout(() => {
       Animated.timing(splashOpacity, {
         toValue: 0,

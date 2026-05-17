@@ -1135,7 +1135,7 @@ async function moveCategory(name, direction) {
      })}
       </ScrollView>
 
-      <Modal visible={showMonthPicker} animationType="slide" transparent onRequestClose={() => setShowMonthPicker(false)}>
+      <Modal visible={showMonthPicker} animationType="fade" transparent onRequestClose={() => setShowMonthPicker(false)}>
   <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.45)' }}>
 <View style={{ backgroundColor: '#fff', borderTopLeftRadius: 16, borderTopRightRadius: 16, maxHeight: '80%' }}>
     <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
@@ -1188,7 +1188,7 @@ async function moveCategory(name, direction) {
       {/* ── Manage modal ── */}
 
 
-<Modal visible={scannerVisible} animationType="slide" onRequestClose={() => setScannerVisible(false)}>
+<Modal visible={scannerVisible} animationType="fade" onRequestClose={() => setScannerVisible(false)}>
         <View style={{ flex: 1, backgroundColor: '#000' }}>
        <CameraView
   style={{ flex: 1 }}
@@ -1233,7 +1233,7 @@ async function moveCategory(name, direction) {
 
 
       {/* ── Bill entry modal ── */}
-      <Modal visible={modalVisible} animationType="slide" transparent onRequestClose={() => setModalVisible(false)}>
+      <Modal visible={modalVisible} animationType="fade" transparent onRequestClose={() => setModalVisible(false)}>
   <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.45)' }}>
     <View style={{ backgroundColor: '#fff', borderTopLeftRadius: 16, borderTopRightRadius: 16, maxHeight: '90%' }}>
     <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 80 }}>
@@ -1546,7 +1546,7 @@ async function moveCategory(name, direction) {
 </Modal>
 
 
-<Modal visible={razlikaModalVisible} animationType="slide" transparent onRequestClose={() => setRazlikaModalVisible(false)}>
+<Modal visible={razlikaModalVisible} animationType="fade" transparent onRequestClose={() => setRazlikaModalVisible(false)}>
   <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.45)' }}>
 <View style={{ backgroundColor: '#fff', borderTopLeftRadius: 16, borderTopRightRadius: 16, maxHeight: '90%' }}>
     <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 80 }}>
